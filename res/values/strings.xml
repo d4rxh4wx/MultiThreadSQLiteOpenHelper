@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Please show logcat for DB opening and closing operations with multi-threads</string>
+    <string name="app_name">MultiThreadSQLiteOpenHelper</string>
+
+</resources>
