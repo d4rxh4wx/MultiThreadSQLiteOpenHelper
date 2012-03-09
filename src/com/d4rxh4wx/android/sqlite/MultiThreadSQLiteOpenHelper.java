@@ -8,6 +8,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * MultiThreadSQLiteOpenHelper:<br>
+ * enhanced SQLiteOpenHelper for android applications where several threads might access and close the same database<br>
+ * <p>
+ * With SQLiteOpenHelper, if one thread is closing database, then other threads will crash while accessing a closed database.<br>
+ * With MultiThreadSQLiteOpenHelper, a thread does not close the database anymore, but asks for a close with the closeIfNeeded method.
+ * It then verifies that each thread asked for closing before really closing the database.
+ * 
+ * @author d4rxh4wx
+ *
+ */
 public abstract class MultiThreadSQLiteOpenHelper extends SQLiteOpenHelper {
 	
 	private final static String TAG = "MULTI-THREAD-DB-HELPER";

@@ -4,6 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 
+/**
+ * 
+ * SimpleDbHelper asking for an opened or closed database 
+ * 
+ * @author d4rxh4wx
+ *
+ */
 public class SimpleDbHelper {
 	
 	private final static String TAG = "MULTI-THREAD-DB-HELPER";
@@ -22,7 +29,7 @@ public class SimpleDbHelper {
 			if (dbHelper == null) {
 				dbHelper = new MyMultiThreadSQLiteOpenHelper(context);
 			}
-			return dbHelper.getWritableDatabase();
+			return dbHelper.getWritableDatabase(); // getting a cached database
 		}
 	}
 	
@@ -30,8 +37,9 @@ public class SimpleDbHelper {
 		synchronized(this) {
 			Logger.INSTANCE.debug(TAG, "asking for closing");
 			if (dbHelper != null) {
+				// Ask for closing database
 				if (dbHelper.closeIfNeeded()) {
-					dbHelper = null;
+					dbHelper = null; // database closed: free resource for GC
 				}
 			}
 		}
