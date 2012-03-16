@@ -6,9 +6,10 @@ Description
 
 Enhanced SQLiteOpenHelper for Android applications where several threads might open and close the same sqlite database.
 
-Instead of calling close method, threads ask for closing the database, preventing a thread from performing a query on a closed database.
+Instead of calling close method, threads ask for closing the database, thus preventing a thread from performing a query on a closed database.
 
 If each thread asked for closing, then a close is actually performed.
+
 Each activity or thread (ui-thread and user-threads) performs an open call on database when resuming, and asks for closing the database when pausing or finishing.
 
 
@@ -46,3 +47,9 @@ User threads running in background:
 			SimpleDbHelper.INSTANCE.close();
 		}
 	}
+
+
+Example
+-------
+
+You can run this application and see what is happening for ActivityA and ActivityB in logcat
