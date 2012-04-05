@@ -3,6 +3,7 @@ MultiThreadSQLiteOpenHelper
 
 Description
 -----------
+An Android Multi Thread SQLiteOpenHelper
 
 Enhanced SQLiteOpenHelper for Android applications where several threads might open and close the same sqlite database.
 
